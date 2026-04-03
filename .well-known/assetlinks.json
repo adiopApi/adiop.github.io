@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.adiop.twa",
+      "sha256_cert_fingerprints": [
+        "B6:FC:E0:76:0E:E5:29:49:D3:7A:FF:01:67:CD:4F:CD:AE:53:1F:64:41:BB:D4:65:89:CB:2B:27:AE:15:F1:AE"
+      ]
+    }
+  }
+]

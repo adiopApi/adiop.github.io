@@ -1,0 +1,59 @@
+{
+   "name":"Adiop",
+   "short_name":"Adiop",
+   "start_url":"/?source=pwa",
+   "id":"/?source=pwa",
+   "display":"fullscreen",
+   "background_color":"#212121",
+   "description":"Unlock the power of AI with Adiop’s innovative internet solutions. We offer an AI Chatbot for news assistance, an AI-powered news aggregator, and an API for developers, all built using the latest AI technologies. Adiop is committed to driving innovation and purposeful development.",
+   "theme_color":"#212121",
+   "orientation":"any",
+   "icons":[
+      {
+         "src":"adiop_icon.png",
+         "type":"image/png",
+         "sizes":"512x512",
+         "purpose":"any"
+      },
+      {
+         "src":"adiop_icon_5.svg",
+         "type":"image/svg",
+         "sizes":"150x150",
+         "purpose":"any"
+      },
+      {
+         "src":"adiop_icon_mono.png",
+         "type":"image/png",
+         "sizes":"512x512",
+         "purpose":"monochrome"
+      },
+      {
+         "src":"adiop_icon.png",
+         "type":"image/png",
+         "sizes":"512x512",
+         "purpose":"maskable"
+      }
+   ],
+   "related_applications":[
+      {
+         "platform":"web",
+         "url":"https://adiop.com"
+      }
+   ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+search",
+      "url": "/?ask=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/?share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+       "title": "text",
+       "text": "text",
+       "url": "url"
+   }
+  }
+}

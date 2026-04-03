@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en"><head> 
+  <title>Share | Adiop News</title>
+  <meta charset="utf-8">
+  <meta name="Description" content="Adiop News is a free and open global news aggregator leveraging AI for comprehensive content curation. Explore diverse news topics through its web app, utilize the advanced search functionality, or integrate Adiop News into your applications and AI agents via the API. Adiop News also provides valuable exposure for publishers through accessible source links." /> 
+  <meta name="Keywords" content="adiop,ai,chatbot" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=6, user-scalable=1"/>
+  <meta name="theme-color" content="#000" /> 
+  <meta name="msapplication-navbutton-color" content="#000" /> 
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="HandheldFriendly" content="true"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="generator" content="ADIOP API 1.0"/>
+  <link rel="manifest" href="adiop_manifest.json"/>
+  <link rel="app_data" href="adiop_data.json"/>
+  <link rel="preload" href="favicon.png" as="image" type="image/png"/>
+  <meta name="application-name" content="Adiop News"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Adiop News"/>
+  <meta property="og:description" content="Adiop News is a free and open global news aggregator leveraging AI for comprehensive content curation. Explore diverse news topics through its web app, utilize the advanced search functionality, or integrate Adiop News into your applications and AI agents via the API. Adiop News also provides valuable exposure for publishers through accessible source links."/>
+  <meta property="og:url" content="https://adiop.com/news/"/>
+  <meta property="og:site_name" content="Adiop News"/>
+  <meta property="og:image" content="https://adiop.com/favicon.png"/>
+  <meta property="og:image:alt" content="Adiop Icon"/>
+  <meta property="og:image:type" content="image/png"/>
+  <meta property="og:image:width" content="512"/>
+  <meta property="og:image:height" content="512"/>
+  <meta property="og:image" content="https://adiop.com/favicon.svg"/>
+  <meta property="og:image" content="https://adiop.com/favicon.ico"/>
+  <meta name="google-adsense-account" content="ca-pub-2519420500233130"/>
+  <link rel="apple-touch-icon" sizes="72x72 57x57 114x114 120x120 192x192 180x180" type="image/png" href="adiop_icon.png"/>
+  <link rel="mask-icon" href="adiop_icon_mono.png" type="image/png" color="#000000">
+  <link rel="icon" sizes="512x512" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="icon" sizes="any" href="favicon.ico"/>
+  <link rel="canonical" href="https://adiop.com/share">
+  <style>
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, img, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea, quote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    quotes: none;
+    list-style: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: 400;
+    list-style: none;
+    text-decoration: none;
+}
+    html {
+    -webkit-text-size-adjust: 100%;
+    min-height: 100%;
+}
+    * {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+    *, :after, :before {
+    box-sizing: border-box;
+}
+    ::selection {
+    color: #fff;
+    background: #4691f6;
+}
+    body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    quotes: none;
+    list-style: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: 400;
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    height: -webkit-fill-available;
+    float: left;
+    background-color: #fff;
+    color: #2d2d2d;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTSAzIDEgTCAxMyAxIEMgMTQuMTA1IDEgMTUgMS44OTUgMTUgMyBMIDE1IDEzIEMgMTUgMTQuMTA1IDE0LjEwNSAxNSAxMyAxNSBMIDMgMTUgQyAxLjg5NSAxNSAxIDE0LjEwNSAxIDEzIEwgMSAzIEMgMSAxLjg5NSAxLjg5NSAxIDMgMSBaIE0gMTAuNDY5IDUuMDAyIEMgMTAuNzQ1IDUuMDAyIDEwLjk2OSA1LjIyNiAxMC45NjkgNS41MDIgTCAxMC45NjkgNi41MDIgQyAxMC45NjkgNi43NzggMTAuNzQ1IDcuMDAyIDEwLjQ2OSA3LjAwMiBMIDMuOTUzIDcuMDA1IEMgMy40MDEgNy4wMDUgMi45NTMgNy40NjUgMi45NTMgOC4wMTcgTCAyLjk1MyAxMS45ODggQyAyLjk1MyAxMi41NCAzLjQwMSAxMi45ODggMy45NTMgMTIuOTg4IEwgMTEuOTgyIDEyLjk4OCBDIDEyLjUzNCAxMi45ODggMTIuOTgyIDEyLjU0IDEyLjk4MiAxMS45ODggTCAxMi45ODIgMy45ODggQyAxMi45ODIgMy40MzYgMTIuNTM0IDIuOTg4IDExLjk4MiAyLjk4OCBMIDcuOTUzIDIuOTg4IEMgNy40MDEgMi45ODggNi45NTMgMy40MzYgNi45NTMgMy45ODggQyA2Ljk1MyA0LjU0IDcuNDAxIDUuMDAyIDcuOTUzIDUuMDAyIEwgMTAuNDY5IDUuMDAyIFogTSAyLjk1MyAzLjk4OCBDIDIuOTUzIDQuNTQgMy40MDEgNC45ODggMy45NTMgNC45ODggQyA0LjUwNSA0Ljk4OCA0Ljk1MyA0LjU0IDQuOTUzIDMuOTg4IEMgNC45NTMgMy40MzYgNC41MDUgMi45ODggMy45NTMgMi45ODggQyAzLjQwMSAyLjk4OCAyLjk1MyAzLjQzNiAyLjk1MyAzLjk4OCBaIiBzdHlsZT0iIiB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAtMy41NTI3MTM2Nzg4MDA1MDFlLTE1LCAtOC44ODE3ODQxOTcwMDEyNTJlLTE2KSIvPgogIDxwYXRoIGQ9Ik0gNS45NTMgOC45ODggQyA2LjUwNSA4Ljk4OCA2Ljk1MyA5LjQzNiA2Ljk1MyA5Ljk4OCBDIDYuOTUzIDEwLjU0IDYuNTA1IDEwLjk4OCA1Ljk1MyAxMC45ODggQyA1LjQwMSAxMC45ODggNC45NTMgMTAuNTQgNC45NTMgOS45ODggQyA0Ljk1MyA5LjQzNiA1LjQwMSA4Ljk4OCA1Ljk1MyA4Ljk4OCBaIiBzdHlsZT0iIiB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAtMy41NTI3MTM2Nzg4MDA1MDFlLTE1LCAtOC44ODE3ODQxOTcwMDEyNTJlLTE2KSI+CiAgICA8YW5pbWF0ZVRyYW5zZm9ybSB0eXBlPSJ0cmFuc2xhdGUiIGFkZGl0aXZlPSJzdW0iIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdmFsdWVzPSIwIDA7NCAwOzAgMCIgZHVyPSIxcyIgZmlsbD0iZnJlZXplIiBrZXlUaW1lcz0iMDsgMC41OyAxIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogIDwvcGF0aD4KPC9zdmc+#dWbG1TrxMb");
+    background-size: 150px 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+          background-color: #e5e5e5;
+      font-family: system-ui, -apple-system, Helvetica Neue, Arial, Verdana, sans-serif;
+      
+}
+    body.ready {
+      background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTSAzIDEgTCAxMyAxIEMgMTQuMTA1IDEgMTUgMS44OTUgMTUgMyBMIDE1IDEzIEMgMTUgMTQuMTA1IDE0LjEwNSAxNSAxMyAxNSBMIDMgMTUgQyAxLjg5NSAxNSAxIDE0LjEwNSAxIDEzIEwgMSAzIEMgMSAxLjg5NSAxLjg5NSAxIDMgMSBaIE0gMTAuNDY5IDUuMDAyIEMgMTAuNzQ1IDUuMDAyIDEwLjk2OSA1LjIyNiAxMC45NjkgNS41MDIgTCAxMC45NjkgNi41MDIgQyAxMC45NjkgNi43NzggMTAuNzQ1IDcuMDAyIDEwLjQ2OSA3LjAwMiBMIDMuOTUzIDcuMDA1IEMgMy40MDEgNy4wMDUgMi45NTMgNy40NjUgMi45NTMgOC4wMTcgTCAyLjk1MyAxMS45ODggQyAyLjk1MyAxMi41NCAzLjQwMSAxMi45ODggMy45NTMgMTIuOTg4IEwgMTEuOTgyIDEyLjk4OCBDIDEyLjUzNCAxMi45ODggMTIuOTgyIDEyLjU0IDEyLjk4MiAxMS45ODggTCAxMi45ODIgMy45ODggQyAxMi45ODIgMy40MzYgMTIuNTM0IDIuOTg4IDExLjk4MiAyLjk4OCBMIDcuOTUzIDIuOTg4IEMgNy40MDEgMi45ODggNi45NTMgMy40MzYgNi45NTMgMy45ODggQyA2Ljk1MyA0LjU0IDcuNDAxIDUuMDAyIDcuOTUzIDUuMDAyIEwgMTAuNDY5IDUuMDAyIFogTSAyLjk1MyAzLjk4OCBDIDIuOTUzIDQuNTQgMy40MDEgNC45ODggMy45NTMgNC45ODggQyA0LjUwNSA0Ljk4OCA0Ljk1MyA0LjU0IDQuOTUzIDMuOTg4IEMgNC45NTMgMy40MzYgNC41MDUgMi45ODggMy45NTMgMi45ODggQyAzLjQwMSAyLjk4OCAyLjk1MyAzLjQzNiAyLjk1MyAzLjk4OCBaIiBzdHlsZT0iIiB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAtMy41NTI3MTM2Nzg4MDA1MDFlLTE1LCAtOC44ODE3ODQxOTcwMDEyNTJlLTE2KSIvPgogIDxwYXRoIGQ9Ik0gNS45NTMgOC45ODggQyA2LjUwNSA4Ljk4OCA2Ljk1MyA5LjQzNiA2Ljk1MyA5Ljk4OCBDIDYuOTUzIDEwLjU0IDYuNTA1IDEwLjk4OCA1Ljk1MyAxMC45ODggQyA1LjQwMSAxMC45ODggNC45NTMgMTAuNTQgNC45NTMgOS45ODggQyA0Ljk1MyA5LjQzNiA1LjQwMSA4Ljk4OCA1Ljk1MyA4Ljk4OCBaIiBzdHlsZT0iIiB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAtMy41NTI3MTM2Nzg4MDA1MDFlLTE1LCAtOC44ODE3ODQxOTcwMDEyNTJlLTE2KSIvPgo8L3N2Zz4=#skWOElb7sd");
+    }
+.hidden {
+    display: none !important;
+}
+  .no-select,.nscl,.disabled,.button,.btnlk {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none
+}
+    .button:not(.off):not(.disabled):active {
+    opacity: .5;
+    background-color: rgba(0,0,0,.13)
+}
+.note {
+    position: fixed;
+    left: 0;
+    bottom: 150px;
+    width: 100%;
+    display: block;
+      text-align: center;
+}  
+.note_3 {
+    position: fixed;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
+    display: block;
+      text-align: center;
+}  
+.note_2 {
+    position: fixed;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    display: block;
+      text-align: center;
+}  
+.txt {
+    color: #212121;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 12px 20px 11px 20px;
+    width: auto;
+    border-radius: 10px;
+    max-width: 360px;
+    min-height: 50px;
+    overflow: hidden;
+    line-height: 24px;
+    font-size: 22px;
+    font-weight: 600;
+    display: inline-block;
+}
+.note_2 p {
+    max-width: 200px;
+    display: inline-block;
+}
+  </style>
+  <noscript>
+    <div class="noscriptmsg">
+      Notice: You must have Javascript enabled to use this App.
+    </div>
+  </noscript>
+    <script type="application/ld+json">
+ {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://adiop.com/#website",
+            "url": "https://adiop.com/",
+            "name": "Adiop News",
+            "description": "Adiop News is a free and open global news aggregator leveraging AI for comprehensive content curation. Explore diverse news topics through its web app, utilize the advanced search functionality, or integrate Adiop News into your applications and AI agents via the API. Adiop News also provides valuable exposure for publishers through accessible source links.",
+            "potentialAction": [
+                {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://adiop.com/?s={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            ],
+            "inLanguage": "en-US"
+        },
+        {
+            "@type": "ImageObject",
+            "@id": "https://adiop.com/#primaryimage",
+            "inLanguage": "en-US",
+            "url": "https://adiop.com/adiop_icon.png",
+            "contentUrl": "https://adiop.com/adiop_icon.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Adiop Icon"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://adiop.com/#webpage",
+            "url": "https://adiop.com/",
+            "name": "World News - Adiop News",
+            "isPartOf": {
+                "@id": "https://adiop.com/#website"
+            },
+            "primaryImageOfPage": {
+                "@id": "https://adiop.com/#primaryimage"
+            },
+            "datePublished": "2020-04-09T09:33:28+00:00",
+            "dateModified": "2021-08-04T19:09:36+00:00",
+            "description": "Trending World News by Adiop News",
+            "breadcrumb": {
+                "@id": "https://adiop.com/#breadcrumb"
+            },
+            "inLanguage": "en-US",
+            "potentialAction": [
+                {
+                    "@type": "ReadAction",
+                    "target": [
+                        "https://adiop.com/"
+                    ]
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://adiop.com/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home"
+                }
+            ]
+        }
+    ]
+}
+</script>
+<script src="CryptoJS.js" type="text/javascript"></script>
+  <script>
+String.prototype.param2 = function(key) {
+  // VERSON 2: BETTER JSON RESULT | ?query=archive_entertainment > {query: "archive_entertainment"}
+  // encodeURIComponent('&') -> %26 | ? -> %3F
+    // BUG: "https://www.nzherald.co.nz/nz/news/article.cfm?c_id=1&amp;objectid=12517880&amp;amp;ref=rss"
+   // "https://rr1---sn-o097znsr.googlevideo.com/videoplayback?expire=1650579139&ei=Y4JhYs7_E6eM2_gPzrOZoAk&ip=2600%3A1700%3A6970%3A74c0%3Ab0d6%3A96a5%3Ad%3Adc06&id=o-ADpafY7PQS5f5zpCx28xNAOAw2XNyTbRQFHwhK5nZvfl&itag=18&source=youtube&requiressl=yes&mh=A7&mm=31%2C26&mn=sn-o097znsr%2Csn-a5mlrn7d&ms=au%2Conr&mv=m&mvi=1&pl=44&initcwndbps=1127500&spc=4ocVC3fTLAkFTO1wcqswQ1lEYD48&vprv=1&mime=video%2Fmp4&ns=OV_vK2BSJOCEo1u2nKb9X3QG&gir=yes&clen=5750653&ratebypass=yes&dur=79.528&lmt=1540926904152142&mt=1650557349&fvip=1&fexp=24001373%2C24007246&c=WEB&txp=5431432&n=0lE7aHxXVidXGnRe3&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIgfKnmVNCc94uDIiBKirUbILxwlTb1cFDmyJ1vMTC-SV8CIQCXSIvUJoUqF-MwCRvbe6m7noZCwej3PYmFv7t2YuQ2rg%3D%3D".param2(); | NOT ACCURATE
+    // "s=vOq0QJ8wRgIhAK3HPE4gmMR5GE8rtWN0JaaWeVem2YXi3Poy9YgMsxwQAiEAlUQ-jA2u0R-bRNO1OtH4yTG9FsdyNpW40ilD2Rai0e8%3De8%3D%3D\u0026sp=sig\u0026url=https://rr1---sn-o097znsr.googlevideo.com/videoplayback%3Fexpire%3D1650579139%26ei%3DY4JhYs7_E6eM2_gPzrOZoAk%26ip%3D2600%253A1700%253A6970%253A74c0%253Ab0d6%253A96a5%253Ad%253Adc06%26id%3Do-ADpafY7PQS5f5zpCx28xNAOAw2XNyTbRQFHwhK5nZvfl%26itag%3D18%26source%3Dyoutube%26requiressl%3Dyes%26mh%3DA7%26mm%3D31%252C26%26mn%3Dsn-o097znsr%252Csn-a5mlrn7d%26ms%3Dau%252Conr%26mv%3Dm%26mvi%3D1%26pl%3D44%26initcwndbps%3D1127500%26spc%3D4ocVC3fTLAkFTO1wcqswQ1lEYD48%26vprv%3D1%26mime%3Dvideo%252Fmp4%26ns%3DOV_vK2BSJOCEo1u2nKb9X3QG%26gir%3Dyes%26clen%3D5750653%26ratebypass%3Dyes%26dur%3D79.528%26lmt%3D1540926904152142%26mt%3D1650557349%26fvip%3D1%26fexp%3D24001373%252C24007246%26c%3DWEB%26txp%3D5431432%26n%3D0lE7aHxXVidXGnRe3%26sparams%3Dexpire%252Cei%252Cip%252Cid%252Citag%252Csource%252Crequiressl%252Cspc%252Cvprv%252Cmime%252Cns%252Cgir%252Cclen%252Cratebypass%252Cdur%252Clmt%26lsparams%3Dmh%252Cmm%252Cmn%252Cms%252Cmv%252Cmvi%252Cpl%252Cinitcwndbps%26lsig%3DAG3C_xAwRQIgfKnmVNCc94uDIiBKirUbILxwlTb1cFDmyJ1vMTC-SV8CIQCXSIvUJoUqF-MwCRvbe6m7noZCwej3PYmFv7t2YuQ2rg%253D%253D".param2();
+var _key,options={},url = this.toString();
+    var gja=/^[\w.]*$/;
+    let Bh=function(a){return decodeURIComponent(a.replace(/\+/g," "))};
+    let cja=function(a){return a&&a.match(gja)?a:Bh(a)};
+    //////////
+    url = url.replace(/&amp;amp;|&amp;/ig,'&');
+  // LOOKING FOR ?
+  let _m = url.match(/\?/g);
+  if(!_m){
+    // THEN LOOK FOR &
+    _m = url.match(/\&/g);
+    if(_m){
+      // TURN THE FIRST & INTO A ?
+      url = url.replace(/[\&]/g, function(match, offset, all) {
+        return all.indexOf("&") === offset ? '?' : '&';
+      });
+    }
+  }
+  else if(_m && _m.length>1){
+    // FIX DOUBLE ? ?
+      // TURN ALL OTHE ? INTO %3F
+      url = url.replace(/[\?]/g, function(match, offset, all) { 
+        return all.indexOf("?") === offset ? '?' : '%3F';
+      });
+  }
+    if(key&&key.constructor==Object){ options = key; key=null}
+//     else if(key&&key.constructor==String) 
+      _key = key?key.replace(/([\[\](){}*?+^$.\\|])/g, "\\$1"):'(.*?)';
+  //var _key = key?key.replace(/([\[\](){}*?+^$.\\|])/g, "\\$1"):'(.*?)';
+  var parms = {}, i, n, v;
+  var regex = new RegExp("[?&]" + _key + "=([^&#]*)", "g");
+  var match = null;
+  while (match = regex.exec(url)) {
+    try{
+      n = cja(key?key:match[1]);
+      v = cja(key?match[1]:match[2]);
+      // https://fonts.googleapis.com/css?family=Oswald&text=0123456789./%
+//       decodeURIComponent('0123456789./%');
+//       escape('0123456789./%');
+//       decodeURIComponent(escape('0123456789./%'));
+//     n = decodeURIComponent(key?key:match[1]);
+//     v = decodeURIComponent(key?match[1]:match[2]);
+      }catch(e){console.log('param-error:',url,e)}
+    
+      if(/^(true|false)$/.test(v)) v = (v=='true');
+//       v = v.isNumeric()?Number(v):v;
+    //parseFloat("24001373%2C24007246")
+    //if(options.numeric) v = v&&!isNaN(parseFloat(v))?parseFloat(v):v;
+    if(options.numeric) v = v&&!isNaN(v)?parseFloat(v):v;
+    if(!parms[n]) parms[n]=v;
+    else{
+      if(parms[n].constructor !== Array) parms[n] = [parms[n]];
+      parms[n].push(v!==undefined ? v : null);
+    }
+  }
+  return key?parms[key]:parms;
+};
+function browserDetection(){
+  // VERSION 1.1
+  // https://github.com/fingerprintjs/fingerprintjs/blob/master/src/utils/browser.ts
+  /*
+ * Functions to help with features that vary through browsers
+ */
+  function countTruthy(values) {
+    return values.reduce((sum, value) => sum + (value ? 1 : 0), 0);
+  }
+  /**
+ * Checks whether the browser is based on mobile or desktop Safari without using user-agent.
+ * All iOS browsers use WebKit (the Safari engine).
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isWebKit() {
+    // Based on research in August 2024
+    const w = window;
+    const n = navigator;
+    return (countTruthy([
+      'ApplePayError' in w,
+      'CSSPrimitiveValue' in w,
+      'Counter' in w,
+      n.vendor.indexOf('Apple') === 0,
+      'RGBColor' in w,
+      'WebKitMediaKeys' in w,
+    ]) >= 4);
+  }
+  /**
+ * Checks whether the browser is based on Chromium without using user-agent.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isChromium() {
+    // Based on research in October 2020. Tested to detect Chromium 42-86.
+    const w = window;
+    const n = navigator;
+    return (countTruthy([
+      'webkitPersistentStorage' in n,
+      'webkitTemporaryStorage' in n,
+      n.vendor.indexOf('Google') === 0,
+      'webkitResolveLocalFileSystemURL' in w,
+      'BatteryManager' in w,
+      'webkitMediaStream' in w,
+      'webkitSpeechGrammar' in w,
+    ]) >= 5);
+  }
+  /**
+ * Checks whether the browser is based on EdgeHTML (the pre-Chromium Edge engine) without using user-agent.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isEdgeHTML() {
+    // Based on research in October 2020
+    const w = window;
+    const n = navigator;
+    return (countTruthy(['msWriteProfilerMark' in w, 'MSStream' in w, 'msLaunchUri' in n, 'msSaveBlob' in n]) >= 3 &&
+            !isTrident());
+  }
+  /**
+ * Checks whether the browser is based on Trident (the Internet Explorer engine) without using user-agent.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isTrident() {
+    const w = window;
+    const n = navigator;
+    // The properties are checked to be in IE 10, IE 11 and not to be in other browsers in October 2020
+    return (countTruthy([
+      'MSCSSMatrix' in w,
+      'msSetImmediate' in w,
+      'msIndexedDB' in w,
+      'msMaxTouchPoints' in n,
+      'msPointerEnabled' in n,
+    ]) >= 4);
+  }
+  /**
+ * Checks whether the browser is based on Gecko (Firefox engine) without using user-agent.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isGecko() {
+    var _a, _b;
+    const w = window;
+    // Based on research in September 2020
+    return (countTruthy([
+      'buildID' in navigator,
+      'MozAppearance' in ((_b = (_a = document.documentElement) === null || _a === void 0 ? void 0 : _a.style) !== null && _b !== void 0 ? _b : {}),
+      'onmozfullscreenchange' in w,
+      'mozInnerScreenX' in w,
+      'CSSMozDocumentRule' in w,
+      'CanvasCaptureMediaStream' in w,
+    ]) >= 4);
+  }
+  /**
+ * Checks whether this WebKit browser is a desktop browser.
+ * It doesn't check that the browser is based on WebKit, there is a separate function for this.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isDesktopWebKit() {
+    // Checked in Safari and DuckDuckGo
+    const w = window;
+    const { HTMLElement, Document } = w;
+    return (countTruthy([
+      'safari' in w, // Always false in Karma and BrowserStack Automate
+      !('ongestureend' in w),
+      !('TouchEvent' in w),
+      !('orientation' in w),
+      HTMLElement && !('autocapitalize' in HTMLElement.prototype),
+      Document && 'pointerLockElement' in Document.prototype,
+    ]) >= 4);
+  }
+  /**
+ * Checks whether the device runs on Android without using user-agent.
+ *
+ * Warning for package users:
+ * This function is out of Semantic Versioning, i.e. can change unexpectedly. Usage is at your own risk.
+ */
+  function isAndroid() {
+    const isItChromium = isChromium();
+    const isItGecko = isGecko();
+    const w = window;
+    const n = navigator;
+    const c = 'connection';
+    // Chrome removes all words "Android" from `navigator` when desktop version is requested
+    // Firefox keeps "Android" in `navigator.appVersion` when desktop version is requested
+    if (isItChromium) {
+      return (countTruthy([
+        !('SharedWorker' in w),
+        // `typechange` is deprecated, but it's still present on Android (tested on Chrome Mobile 117)
+        // Removal proposal https://bugs.chromium.org/p/chromium/issues/detail?id=699892
+        // Note: this expression returns true on ChromeOS, so additional detectors are required to avoid false-positives
+        n[c] && 'ontypechange' in n[c],
+        !('sinkId' in new Audio()),
+      ]) >= 2);
+    }
+    else if (isItGecko) {
+      return countTruthy(['onorientationchange' in w, 'orientation' in w, /android/i.test(n.appVersion)]) >= 2;
+    }
+    else {
+      // Only 2 browser engines are presented on Android.
+      // Actually, there is also Android 4.1 browser, but it's not worth detecting it at the moment.
+      return false;
+    }
+  }
+  // DETECT IOS DEVICE
+  function isIos(){
+    return !!(isWebKit()&&!isDesktopWebKit())
+  }
+  
+  function isTouchScreen(){
+    return ('ongestureend' in window)&&('TouchEvent' in window)&&("maxTouchPoints" in Navigator)
+  }
+  let _isTouchScreen = isTouchScreen();
+  let _isOrientaton = ('onorientationchange' in window)&&('orientation' in window);
+//   let _isStandalone = !!(navigator.standalone)||(window.matchMedia('(display-mode: standalone)').matches);
+//   let cssMobileDetect = window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('content').indexOf('mobile') !== -1;
+  // navigator.userAgentData ??
+  function isDesktop(){
+    return !_isOrientaton&&!_isTouchScreen||navigator.platform==='Win32'
+  }
+  function isMobileSimilator(){
+    return !_isTouchScreen&&_isOrientaton
+  }
+  function isChrome(){
+    let isLookBehindSupported = false;
+    try { isLookBehindSupported = !!new RegExp("(?<=)"); } catch (e) {
+      // In unsupported browsers, trying to create a lookbehind expression will simply error, which is caught here
+    }
+    if (isLookBehindSupported) {
+      // Yay, lookbehind expressions are supported
+      return true;
+    } 
+    return false
+  }
+  function isMobile(){
+    return _isTouchScreen && ('onorientationchange' in window) && ('orientation' in window)
+  }
+  function getlatform(){
+    let os,platform = window.navigator.platform;
+    if ( !os && platform === 'MacIntel' || !os && platform === 'MacPPC' ) {
+        os = 'Mac OS X';
+//       try{
+//         osversion = /os [\d\.\_\d]+/i.exec(ua)[0];
+//         if ( /[\_]/.test(osversion) ) {
+//             osversion = osversion.split(' ').pop().split('_').join('.');
+//         }
+//         }catch(_){}
+    } 
+  else if ( platform === 'CrOS' ) {
+        os = 'ChromeOS';
+    } 
+  else if ( platform === 'Win32' || platform == 'Win64' ) {
+        os = 'Windows';
+        let bit = platform.replace(/[^0-9]+/,'');
+    if(bit) os = os+' '+bit;
+    } 
+  else if ( !os && /Android/i.test(window.navigator.appVersion) ) {
+        os = 'Android';
+//             mobile = 1;
+    } 
+  else if ( !os && /Linux/.test(platform) ) {
+        os = 'Linux';
+    } 
+//   else if ( !os && /Windows/.test(ua) ) {
+//         os = 'Windows';
+//     }
+    return os;
+  }
+  function __USER_AGENT_PARSER() {
+    let browser,
+        version,
+        mobile,
+        os,
+        osversion,
+        bit,
+        ua = window.navigator.userAgent,
+        platform = window.navigator.platform;
+    //Internet Explorer
+    if ( /MSIE/.test(ua) ) {
+        
+        browser = 'Internet Explorer';
+        
+        if ( /IEMobile/.test(ua) ) {
+            mobile = 1;
+        }
+        
+        version = /MSIE \d+[.]\d+/.exec(ua)[0].split(' ')[1];
+        
+    } 
+    //Google Chrome
+  else if ( /Chrome/.test(ua) ) {
+        
+        //Chromebooks
+        if ( /CrOS/.test(ua) ) {
+            platform = 'CrOS';
+        }
+        browser = 'Chrome';
+        version = /Chrome\/[\d\.]+/.exec(ua)[0].split('/')[1];
+        
+    } 
+   // Opera Browser
+  else if ( /Opera/.test(ua) ) {
+        
+        browser = 'Opera';
+        
+        if ( /mini/.test(ua) || /Mobile/.test(ua) ) {
+            mobile = 1;
+        }
+        
+    } 
+    //Android Browser
+  else if ( /Android/.test(ua) ) {
+        
+        browser = 'Android Webkit Browser';
+        mobile = 1;
+        os = /Android\s[\.\d]+/.exec(ua)[0];
+        
+    } 
+    //Mozilla firefox
+  else if ( /Firefox/.test(ua) ) {
+        
+        browser = 'Firefox';
+        
+        if ( /Fennec/.test(ua) ) {
+            mobile = 1;
+        }
+        version = /Firefox\/[\.\d]+/.exec(ua)[0].split('/')[1];
+        
+    } 
+    //Safari
+  else if ( /Safari/.test(ua) ) {
+        
+        browser = 'Safari';
+        
+        if ( (/iPhone/.test(ua)) || (/iPad/.test(ua)) || (/iPod/.test(ua)) ) {
+            os = 'iOS';
+            mobile = 1;
+        }
+        
+    }
+  
+    if ( !version ) {
+        
+         version = /Version\/[\.\d]+/.exec(ua);
+         
+         if (version) {
+             version = version[0].split('/')[1];
+         } else {
+             version = /Opera\/[\.\d]+/.exec(ua)[0].split('/')[1];
+         }
+         
+    }
+  //////////////////
+    // OS
+    if ( !os && platform === 'MacIntel' || !os && platform === 'MacPPC' ) {
+        os = 'Mac OS X';
+      try{
+        osversion = /os [\d\.\_\d]+/i.exec(ua)[0];
+        if ( /[\_]/.test(osversion) ) {
+            osversion = osversion.split(' ').pop().split('_').join('.');
+        }
+        }catch(_){}
+    } 
+  else if ( platform === 'CrOS' ) {
+        os = 'ChromeOS';
+    } 
+  else if ( platform === 'Win32' || platform == 'Win64' ) {
+        os = 'Windows';
+        bit = platform.replace(/[^0-9]+/,'');
+    } 
+  else if ( !os && /Android/.test(ua) ) {
+        os = 'Android';
+            mobile = 1;
+    } 
+  else if ( !os && /Linux/.test(platform) ) {
+        os = 'Linux';
+    } 
+  else if ( !os && /Windows/.test(ua) ) {
+        os = 'Windows';
+    }
+  if(browser&&version) browser = browser+' '+version;
+  if(os&&bit) os = os+' '+bit;
+  if(os&&osversion) os = os+' '+osversion;
+  return {
+    browser : browser,
+    mobile : !!(mobile),
+    os : os,
+//     resolution : [window.innerWidth,window.innerHeight],
+//     host: location.host,
+//     url: location.href,
+//     time: Date.now()
+  };
+//   for(var i in window.USER_AGENT){ if(!window.USER_AGENT[i]) {delete window.USER_AGENT[i];}}
+}
+  function __cookie(n){
+    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(n).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null
+  }
+  // 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Mobile Safari/537.36'
+  let __USER_AGENT = __USER_AGENT_PARSER();
+  let __IS_MOBILE = isMobile()||__USER_AGENT.mobile;
+  // ADIOP.COM COOKIE sid: 1d75fce27195b727aaa304be3e2786fe
+  // ADIOP.LOC COOKIE PHPSESSID: kmd8h2dcfgtue6o88ko3ebt175
+//   let session_cookie = __cookie('PHPSESSID')||__cookie('sid');
+  return {
+    os: isIos()?'ios':(isAndroid()?'android':__USER_AGENT.os),
+    engine: isChromium()?'chromium':(isWebKit()?'webkit':(isEdgeHTML()?'edge':(isGecko()?'gecko':(isTrident()?'trident':null)))),
+//     standalone: _isStandalone,
+//     touchscreen: _isTouchScreen,
+    device: isMobile()?'mobile':(isDesktop()?'desktop':null),
+//     device: isMobile()?'mobile':(isMobileSimilator()?'mobile_similator':(isDesktop()?'desktop':null))
+    browser: __USER_AGENT.browser,
+//     session_id: session_cookie
+  }
+}
+function __decrypt(str,pass) {
+//    if(!API_TOKEN) return;
+//   pass = pass||API_TOKEN;
+  if(window.CryptoJS){
+    // DECRYPT FROM PHP: _tools.decrypt(atob(str),pass);
+var hash = CryptoJS.enc.Utf8.parse(CryptoJS.MD5("7346ce4c5ca0e750104927f309a322ee06f21bfb64f7ef20e5723c29edefcaa4"));
+var iv = CryptoJS.enc.Utf8.parse(CryptoJS.MD5("^&%AD*+$I251-OP?&()R_X@#!").toString(CryptoJS.enc.Hex).slice(0,16));
+var encrypted = CryptoJS.enc.Base64.parse(str);
+var decrypted = CryptoJS.AES.decrypt(CryptoJS.lib.CipherParams.create({ciphertext: encrypted}), hash, { iv: iv});
+    return decrypted.toString(CryptoJS.enc.Utf8);
+  }
+};
+  function SHARE(){
+//     return;
+      const NOTE_TXT = document.getElementById("txt");
+      const NOTE_TXT_3 = document.getElementById("txt3");
+      const NOTE_EXP = document.getElementById("note_2");
+    return new Promise((resolve, reject) => {
+      let invited,sharedLink;
+      if(/\?/.test(location.href)){
+        let _request = location.href.param2();
+//           console.log(_request)
+        if(_request.link){ 
+          sharedLink = _request.link;
+        }
+      }
+      if(sharedLink){
+        let linkData;
+        try{
+          linkData = __decrypt(decodeURIComponent(sharedLink)); 
+//           console.log(linkData)
+        }catch(_){
+          console.log(_)
+//           __.confirm('Error:<br><br>'+_,{alert:1,error:1});
+          return;
+        }
+      // https://adiop.loc/mef/demo/firebase/adiopai/public/share.html?link=ObkCnGZR3qmLt5kyeNuK13Lt%2BYHKFuGWnl6k%2BN0m4blqjGAurtBXWUH%2FrlgLfCLnIzOmPZDinp9Bqf96gcwXOw%3D%3D
+      // https://adiop.com/share?link=ObkCnGZR3qmLt5kyeNuK13Lt%2BYHKFuGWnl6k%2BN0m4blqjGAurtBXWUH%2FrlgLfCLnIzOmPZDinp9Bqf96gcwXOw%3D%3D
+        function exec(){
+          document.body.className += ' ready';
+          NOTE_TXT.innerHTML = 'Open Link >';
+          NOTE_TXT_3.innerHTML = '< Back to Adiop';
+          NOTE_EXP.innerHTML = 'Click to open the <a href="https://adiop.com" target="self">link</a> or visit <a href="https://adiop.com" target="self">Adiop News</a> for more.';
+                  document.getElementById("note").classList.remove("hidden");
+          NOTE_TXT.addEventListener("click", function() {
+            window.open(linkData, "_blank");
+          });
+          NOTE_TXT_3.addEventListener("click", function() {
+            location.assign("https://adiop.com");
+          });
+        }
+//               document.body.className += ' ready';
+//         return;
+        ///////////
+        if(linkData){
+            (async()=>{
+              let response;
+              let browser = browserDetection();
+              setTimeout(function(){
+                if(!response){ 
+                  NOTE_TXT_3.innerHTML = 'Redirecting...';
+                  //document.getElementById("note").classList.add("hidden");
+                  NOTE_EXP.innerHTML = `If it takes too long<br>Please go to this <a href="${linkData}" target="self">link</a> or visit <a href="https://adiop.com" target="self">Adiop News</a> for more.`;
+                }
+              },10000);
+              
+              response = await fetch(`https://script.google.com/macros/s/AKfycbzk61dQGtLMgAoxWqHPfeRHHhJS8lxZs2JFhwpH1i5RQFKpm5-nl-Uy9JFaDN9KkqqKsg/exec`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",// IMPORTANT!
+                },
+                body: JSON.stringify({
+                  visitTracker:true,
+                  data:{
+                    link:linkData,
+                    browser:`${browser.os}|${browser.engine}|${browser.browser}`,
+                    time:(new Date()).getTime(),
+                    type:'shared'
+                  }
+                }),
+              }).catch(e=>{
+              document.body.className += ' ready';
+                reject(e)
+                NOTE_TXT_3.innerHTML = 'Error!';
+                //document.getElementById("note").classList.add("hidden");
+                NOTE_EXP.innerHTML = `Something went wrong!<br>Please go to this <a href="${linkData}" target="_blank">link</a> or visit <a href="https://adiop.com" target="self">Adiop News</a> for more.`;
+//                 location.assign(linkData); // REMOVE SEARCH FROM LOCATION,
+              });
+              if(response) exec();
+              //location.assign(linkData); // REMOVE SEARCH FROM LOCATION
+            })();
+        }
+        else{
+          document.body.className += ' ready';
+          NOTE_TXT_3.innerHTML = 'Adiop News';
+          NOTE_EXP.innerHTML = 'Error:<br>Provided Link was not valid.<br>Please go to <a href="https://adiop.com" target="self">Adiop News</a>';
+          NOTE_TXT_3.addEventListener("click", function() {
+            location.assign("https://adiop.com");
+          });
+        }
+        return;
+      }
+    });
+  }
+  </script>
+<!-- <script src="adiop.news.js" type="text/javascript"></script> -->
+<!-- <script src="https://script.google.com/macros/s/AKfycbzk61dQGtLMgAoxWqHPfeRHHhJS8lxZs2JFhwpH1i5RQFKpm5-nl-Uy9JFaDN9KkqqKsg/exec?pre=mkdf" type="text/javascript" id="mkdf"></script> -->
+  </head>
+  <body onload="SHARE()">
+    <div class="note hidden" id="note"><p class="txt button" id="txt">Adiop</p></div>
+    <div class="note_3" id="note3"><p class="txt button" id="txt3">Loading..</p></div>
+    <div class="note_2"><p id="note_2"><a href="https://adiop.com" target="self">Adiop News</a></p></div>
+    
+<!--   <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCKz3Mvzn4fIs9-8j0iR2kHbrM5eyUkUo",
+    authDomain: "adiops.firebaseapp.com",
+    databaseURL: "https://adiops.firebaseio.com",
+    projectId: "adiops",
+    storageBucket: "adiops.appspot.com",
+    messagingSenderId: "739894795403",
+    appId: "1:739894795403:web:81d12fcf0bd6401e34888e",
+    measurementId: "G-Y8X1K3751P"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script> -->
+  </body>
+</html>
