@@ -7,8 +7,8 @@ const __ = {};
 //   self.importScripts('wispTlsClient.js');
 self.sockets = [];
 // __.wispServerUrl = "wss://localhost:9010/";
-__.wispServerUrl = "wss://wisp.mercurywork.shop/";
-const adiop_windows_endpoint_sha = "949c402f04a0d6bca33d4d681c9781b8957f7ae1488c3775f7df2c402e086d1c";
+__.wispServerUrl = "";
+const adiop_windows_endpoint_sha = "";
 const nativeWebSocket = self.WebSocket;
 self.WebSocket = function(...args){
   const socket = new nativeWebSocket(...args);
